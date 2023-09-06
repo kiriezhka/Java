@@ -51,6 +51,21 @@ public class Person {
         System.out.println("Домашний адрес: " + homeAddress);
     }
 
+    // Перегруженный метод для ввода данных о человеке с указанием ФИО и контактного телефона
+    public void inputPersonData(String fullName, String phoneNumber) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+    }
+
+    // Перегруженный метод для вывода данных о человеке без адреса
+    public void displayPersonDataWithoutAddress() {
+        System.out.println("ФИО: " + fullName);
+        System.out.println("Дата рождения: " + dateOfBirth);
+        System.out.println("Контактный телефон: " + phoneNumber);
+        System.out.println("Город: " + city);
+        System.out.println("Страна: " + country);
+    }
+
     // Геттеры и сеттеры для доступа к полям класса
 
     public String getFullName() {
@@ -107,5 +122,14 @@ public class Person {
         person.inputPersonData();
         System.out.println("Введенные данные о человеке:");
         person.displayPersonData();
+
+        Person person2 = new Person("", "", "", "", "", "");
+        person2.inputPersonData("Иванов Иван Иванович", "+1234567890");
+        System.out.println("Введенные данные о человеке (перегруженный метод):");
+        person2.displayPersonData();
+
+        System.out.println("Введенные данные о человеке без адреса:");
+        person.displayPersonDataWithoutAddress();
     }
+
 }

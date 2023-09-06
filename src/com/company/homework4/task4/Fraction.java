@@ -12,7 +12,10 @@ public class Fraction {
         this.numerator = numerator;
         this.denominator = denominator;
     }
-
+    // Перегруженный конструктор для создания дроби с целым числителем и знаменателем равным 1
+    public Fraction(int wholeNumber) {
+        this(wholeNumber, 1);
+    }
     // Метод для ввода данных о дроби
     public void inputFractionData() {
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +35,11 @@ public class Fraction {
     public void displayFractionData() {
         System.out.println("Дробь: " + numerator + "/" + denominator);
     }
-
+    // Перегруженный метод для ввода дроби с целым числителем
+    public void inputFractionData(int wholeNumber) {
+        this.numerator = wholeNumber;
+        this.denominator = 1;
+    }
     // Методы для арифметических операций
 
     // Сложение дробей
@@ -64,6 +71,24 @@ public class Fraction {
         int newNumerator = this.numerator * other.denominator;
         int newDenominator = this.denominator * other.numerator;
         return new Fraction(newNumerator, newDenominator);
+    }
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public void setNumerator(int numerator) {
+        this.numerator = numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
+    }
+
+    public void setDenominator(int denominator) {
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Знаменатель не может быть равен нулю.");
+        }
+        this.denominator = denominator;
     }
 
     public static void main(String[] args) {
